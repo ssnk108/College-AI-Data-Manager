@@ -62,6 +62,28 @@ function decorateSources(sources = []) {
     .sort((a, b) => a.priority - b.priority);
 }
 
+function buildSourceSuccess(scrapedPages = []) {
+  return scrapedPages.filter((page) => page.text).map((page) => {
+    const text = page.text.toLowerCase();
+    const fieldsFilled = [];
+    if (/course|program|department|b\.?tech|mba|bca|mca|diploma/.test(text)) fieldsFilled.push("courses");
+    if (/fee|fees|tuition|hostel/.test(text)) fieldsFilled.push("fees");
+    if (/eligibility|admission|entrance|counselling/.test(text)) fieldsFilled.push("admission");
+    if (/placement|package|recruiter|internship/.test(text)) fieldsFilled.push("placements");
+    if (/aicte|ugc|naac|nba|nirf|approval|accredit/.test(text)) fieldsFilled.push("approvals");
+    if (/address|phone|email|contact/.test(text)) fieldsFilled.push("contact");
+    const courseMatches = text.match(/\b(b\.?tech|m\.?tech|mba|bba|bca|mca|diploma|b\.?sc|m\.?sc|b\.?com|pharmacy|nursing)\b/g) || [];
+    const feeMatches = text.match(/(?:rs\.?|inr|₹)\s?[\d,.]+|[\d,.]+\s?(?:lakh|lakhs|k)\b/g) || [];
+    return {
+      source: page.sourceType || "Web Page",
+      url: page.url,
+      fieldsFilled: [...new Set(fieldsFilled)],
+      coursesFound: Math.min(courseMatches.length, 50),
+      feesFound: Math.min(feeMatches.length, 50)
+    };
+  });
+}
+
 export async function researchCollegeSources(input) {
   const extractionMode = input.extractionMode === "deep" ? "deep" : "quick";
   const searchResult = await findCollegeSourceUrls({ ...input, extractionMode });
@@ -86,6 +108,8 @@ export async function researchCollegeSources(input) {
     scrapedUrlCount: scrapedUrls.length,
     brochureCount,
     totalTextLength,
+    retryAttempts: input.retryAttempt || 0,
+    sourceSuccess: buildSourceSuccess(scrapedPages),
     sourcePriority: decoratedSources.map((source) => ({
       title: source.title || source.url,
       url: source.url,

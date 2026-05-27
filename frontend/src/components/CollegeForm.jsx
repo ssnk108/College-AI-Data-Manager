@@ -2,6 +2,7 @@ import { Plus, Save, Trash2 } from "lucide-react";
 import React, { useMemo, useState } from "react";
 import { ConfidenceBadge, VerificationBadge } from "./Badges.jsx";
 import { Section, SelectInput, TextArea, TextInput } from "./FormControls.jsx";
+import { Button, Modal } from "./ui.jsx";
 import { emptyCourse, emptySourceLink, facilityOptions, ownershipOptions, warningOptions } from "../data/emptyCollege.js";
 
 const tabs = ["Basic", "Approval", "Courses", "Admission", "Placements", "Review", "Warnings", "Sources"];
@@ -19,7 +20,7 @@ function isValidUrl(value) {
   }
 }
 
-export default function CollegeForm({ initialData, onSubmit, submitLabel = "Save College", loading = false }) {
+export default function CollegeForm({ initialData, duplicateMatch, onSubmit, onUpdateExisting, onCreateSeparate, onEditExisting, onCancelDuplicate, submitLabel = "Save College", loading = false }) {
   const [college, setCollege] = useState(initialData);
   const [activeTab, setActiveTab] = useState("Basic");
 
@@ -81,6 +82,61 @@ export default function CollegeForm({ initialData, onSubmit, submitLabel = "Save
           <ConfidenceBadge score={college.confidenceScore} />
         </div>
       </div>
+        {duplicateMatch && (
+          <Modal
+            open
+            title="Possible Duplicate College Found"
+            tone="amber"
+            onClose={onCancelDuplicate}
+            footer={
+              <>
+                <Button variant="secondary" type="button" onClick={onEditExisting}>Edit Existing</Button>
+                <Button variant="primary" type="button" onClick={() => onUpdateExisting?.(college)}>Update Existing</Button>
+                <Button variant="ghost" type="button" onClick={() => onCreateSeparate?.(college)}>Add Anyway</Button>
+                <Button variant="secondary" type="button" onClick={onCancelDuplicate}>Cancel</Button>
+              </>
+            }
+          >
+            <div className="space-y-4">
+              <div className="rounded-xl border border-amber-200 bg-amber-50 p-4">
+                <p className="font-bold text-amber-950">A possible duplicate was detected.</p>
+                <p className="mt-2 text-sm text-amber-900">Review the existing college record before creating a new entry.</p>
+              </div>
+              <div className="grid gap-3 sm:grid-cols-2">
+                <div className="rounded-xl border border-slate-200 bg-white p-4">
+                  <p className="text-xs uppercase text-slate-500">Existing college</p>
+                  <p className="mt-2 text-sm font-semibold text-slate-900">{duplicateMatch.existing?.collegeName || duplicateMatch.existing?.name}</p>
+                  <p className="mt-1 text-sm text-slate-600">{duplicateMatch.existing?.city || "City not added"}{duplicateMatch.existing?.state ? `, ${duplicateMatch.existing?.state}` : ""}</p>
+                  <p className="mt-2 text-sm text-slate-600">Website: {duplicateMatch.existing?.website || "-"}</p>
+                  <p className="mt-1 text-sm text-slate-600">Email: {duplicateMatch.existing?.email || "-"}</p>
+                  <p className="mt-1 text-sm text-slate-600">Phone: {duplicateMatch.existing?.phone || "-"}</p>
+                  <p className="mt-2 text-sm text-slate-600">Verification: {duplicateMatch.existing?.verificationStatus || "Unknown"}</p>
+                </div>
+                <div className="rounded-xl border border-slate-200 bg-white p-4">
+                  <p className="text-xs uppercase text-slate-500">Match reasons</p>
+                  <div className="mt-2 space-y-2 text-sm text-slate-700">
+                    {duplicateMatch.existing?.matchReasons?.length ? duplicateMatch.existing.matchReasons.map((reason, index) => (
+                      <p key={index} className="rounded-lg bg-slate-50 p-2 text-sm">{reason}</p>
+                    )) : <p className="text-slate-500">No specific match reasons available.</p>}
+                  </div>
+                  {duplicateMatch.matches?.length > 1 && (
+                    <div className="mt-4 rounded-lg border border-slate-100 bg-slate-50 p-3 text-sm text-slate-700">
+                      <p className="font-semibold">Other possible duplicates</p>
+                      <ul className="mt-2 space-y-2">
+                        {duplicateMatch.matches.slice(1, 4).map((match) => (
+                          <li key={match._id} className="rounded-md bg-white p-2 shadow-sm">
+                            <p className="font-semibold">{match.name}</p>
+                            <p className="text-xs text-slate-500">{match.city || "-"}, {match.state || "-"}</p>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  )}
+                </div>
+              </div>
+            </div>
+          </Modal>
+        )}
       {debug && (
         <div className="rounded-lg border border-sky-100 bg-sky-50 p-3 text-sm text-sky-950">
           <div className="grid gap-2 sm:grid-cols-2 lg:grid-cols-5">

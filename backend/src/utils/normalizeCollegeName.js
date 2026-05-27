@@ -17,6 +17,21 @@ const expansions = [
   { test: /\buem\s*kolkata\b|\buem\b/, name: "university of engineering and management kolkata" }
 ];
 
+const looseStopWords = new Set([
+  "institute",
+  "college",
+  "university",
+  "technology",
+  "technological",
+  "engineering",
+  "management",
+  "science",
+  "sciences",
+  "and",
+  "of",
+  "the"
+]);
+
 function cleanName(name = "") {
   let value = String(name).toLowerCase().replace(/[.,]/g, " ").replace(/\s+/g, " ").trim();
   typoFixes.forEach(([pattern, replacement]) => {
@@ -50,3 +65,48 @@ export function normalizeCollegeName(inputName = "") {
   };
 }
 
+export function looseCollegeKey(inputName = "") {
+  return cleanName(inputName)
+    .split(" ")
+    .filter((word) => word && !looseStopWords.has(word))
+    .join(" ");
+}
+
+export function getWebsiteDomain(url = "") {
+  try {
+    return new URL(url).hostname.replace(/^www\./, "").toLowerCase();
+  } catch {
+    return "";
+  }
+}
+
+export function normalizeWebsite(url = "") {
+  const value = String(url || "").trim();
+  if (!value) return "";
+  try {
+    const parsed = new URL(value.startsWith("http") ? value : `https://${value}`);
+    return parsed.hostname.replace(/^www\./, "").toLowerCase();
+  } catch {
+    return value.replace(/^www\./, "").replace(/\/+$/, "").toLowerCase();
+  }
+}
+
+export function extractDomain(url = "") {
+  return getWebsiteDomain(url);
+}
+
+export function normalizePhone(phone = "") {
+  return String(phone || "").replace(/[^0-9+]/g, "").trim();
+}
+
+export function buildCollegeIdentity(college = {}) {
+  const name = college.basicInfo?.collegeName || college.collegeName || "";
+  const normalized = normalizeCollegeName(name);
+  const normalizedCollegeKey = looseCollegeKey(normalized.normalizedName);
+  return {
+    normalizedCollegeName: normalized.normalizedName,
+    normalizedCollegeKey,
+    aliases: [...new Set([normalized.originalName, normalized.normalizedName, normalizedCollegeKey, ...normalized.possibleNames].filter(Boolean))],
+    websiteDomain: getWebsiteDomain(college.basicInfo?.officialWebsite || college.officialWebsite || "")
+  };
+}

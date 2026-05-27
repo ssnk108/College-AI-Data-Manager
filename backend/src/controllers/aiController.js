@@ -1,5 +1,7 @@
 import { extractCollegeWithGroq } from "../services/groqService.js";
-import { researchCollegeSources } from "../services/multiSourceResearchService.js";
+import { findDuplicateCollege } from "../services/collegeDuplicateService.js";
+import { buildMergePreview } from "../services/mergeCollegeData.js";
+import { runUniversalCollegeResearch } from "../services/universalCollegeResearchEngine.js";
 
 const textFieldsNeedingVerification = [];
 
@@ -481,29 +483,54 @@ export async function extractCollege(req, res, next) {
       throw new Error("College name is required for AI extraction");
     }
 
-    const researchResult = await researchCollegeSources({ collegeName, city, state, officialWebsite, sourceUrls, extractionMode });
-    const foundSources = researchResult.sources || [];
-    const scrapedPages = researchResult.scrapedPages || [];
-    const aiData = await extractCollegeWithGroq({
-      collegeName,
-      normalizedCollege: researchResult.normalized,
-      city,
-      state,
-      officialWebsite,
-      directAdmissionAvailable: req.body.directAdmissionAvailable,
-      ownershipInput: req.body.ownershipInput,
-      admissionNote: req.body.admissionNote,
-      scrapedPages
+    const engineResult = await runUniversalCollegeResearch({
+      input: req.body,
+      extractAndNormalize: async ({ researchResult, allSources, allPages, debug }) => {
+        const aiData = await extractCollegeWithGroq({
+          collegeName,
+          normalizedCollege: researchResult.normalized,
+          city,
+          state,
+          officialWebsite,
+          directAdmissionAvailable: req.body.directAdmissionAvailable,
+          ownershipInput: req.body.ownershipInput,
+          admissionNote: req.body.admissionNote,
+          scrapedPages: allPages
+        });
+
+        return normalizeAiCollege({
+          aiData,
+          input: req.body,
+          scrapedPages: allPages,
+          foundSources: allSources,
+          normalizedCollege: researchResult.normalized,
+          extractionDebug: debug
+        });
+      }
     });
 
-    const normalized = normalizeAiCollege({
-      aiData,
-      input: req.body,
-      scrapedPages,
-      foundSources,
-      normalizedCollege: researchResult.normalized,
-      extractionDebug: researchResult.debug
-    });
+    const normalized = engineResult.college;
+    normalized.extractionDebug = {
+      ...(normalized.extractionDebug || {}),
+      universalEngine: true,
+      finalPlanner: engineResult.planner,
+      qualityBreakdown: engineResult.quality,
+      normalizedName: engineResult.research?.normalized?.normalizedName || normalized.extractionDebug?.normalizedName || "",
+      possibleNames: engineResult.research?.normalized?.possibleNames || normalized.extractionDebug?.possibleNames || []
+    };
+    const duplicate = await findDuplicateCollege(normalized);
+    if (duplicate) {
+      const existingPlain = duplicate.college.toObject();
+      const preview = buildMergePreview(existingPlain, normalized);
+      normalized.duplicateMatch = {
+        existing: duplicate.existing,
+        score: duplicate.score,
+        reasons: duplicate.reasons,
+        recommendation: "Update Existing College",
+        mergeSummary: preview.summary,
+        changes: preview.changes.slice(0, 100)
+      };
+    }
     console.log("[AI extract] courses:", normalized.courses.length, "confidence:", normalized.confidenceScore, "sources:", normalized.sourceLinks.length);
     res.json(normalized);
   } catch (error) {

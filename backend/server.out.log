@@ -1,0 +1,191 @@
+
+> college-ai-data-manager-backend@1.0.0 start
+> node src/server.js
+
+API running on port 5000
+[0mGET / [32m200[0m 2.811 ms - 52[0m
+[0mGET / [32m200[0m 0.849 ms - 52[0m
+[AI search] normalized: {
+  originalName: 'Arka Jain University',
+  normalizedName: 'arka jain university',
+  possibleNames: [ 'Arka Jain University', 'arka jain university' ]
+}
+[AI search] queries: [
+  'Arka Jain University official website',
+  'Arka Jain University Jharkhand official website',
+  'Arka Jain University Jamshedpur official website',
+  'Arka Jain University collegedunia',
+  'Arka Jain University shiksha',
+  'Arka Jain University collegedekho',
+  'Arka Jain University collegebatch',
+  'Arka Jain University collegevidya',
+  'Arka Jain University careers360',
+  'Arka Jain University getmyuni',
+  'Arka Jain University universitykart',
+  'Arka Jain University courses fees',
+  'Arka Jain University all courses',
+  'Arka Jain University specializations',
+  'Arka Jain University admission brochure pdf',
+  'Arka Jain University fee structure pdf',
+  'Arka Jain University departments',
+  'Arka Jain University placements',
+  'Arka Jain University placement report',
+  'Arka Jain University hostel fees',
+  'Arka Jain University reviews',
+  'Arka Jain University ranking',
+  'Arka Jain University contact',
+  'Arka Jain University affiliation',
+  'Arka Jain University AICTE approval',
+  'Arka Jain University NAAC',
+  'Arka Jain University NBA accreditation',
+  'Arka Jain University NIRF',
+  'Arka Jain University admission process',
+  'Arka Jain University seat intake',
+  'Arka Jain University eligibility',
+  'Arka Jain University scholarship'
+]
+[AI search] found URLs: [ 'https://arkajainuniversity.ac.in/' ]
+[AI scrape] page count: 18
+[AI scrape] readable text length: 314051
+[AI research] mode: quick
+[AI research] source count: 1 scraped: 18 brochures: 1
+[Universal research] retry: 1 quality: 70 priority: [
+  'contact',
+  'courses',
+  'fees',
+  'admission',
+  'placements',
+  'approvals'
+]
+[AI search] normalized: {
+  originalName: 'Arka Jain University',
+  normalizedName: 'arka jain university',
+  possibleNames: [ 'Arka Jain University', 'arka jain university' ]
+}
+[AI search] queries: [
+  'Arka Jain University contact address',
+  'Arka Jain University contact official',
+  'Arka Jain University about contact',
+  'Arka Jain University courses fees',
+  'Arka Jain University all courses',
+  'Arka Jain University fee structure PDF',
+  'Arka Jain University admission brochure PDF',
+  'Arka Jain University departments',
+  'site:collegedunia.com "Arka Jain University" "Jharkhand"',
+  'site:shiksha.com "Arka Jain University" "Jharkhand"',
+  'site:collegedekho.com "Arka Jain University" "Jharkhand"',
+  'Arka Jain University courses and fees Collegedunia',
+  'Arka Jain University courses and fees Shiksha',
+  'Arka Jain University CollegeDekho fees',
+  'Arka Jain University hostel fees',
+  'Arka Jain University admission process',
+  'Arka Jain University eligibility admission',
+  'Arka Jain University placement report PDF',
+  'Arka Jain University highest package',
+  'Arka Jain University average package',
+  'Arka Jain University top recruiters',
+  'Arka Jain University NIRF placement',
+  'Arka Jain University affiliation',
+  'Arka Jain University university affiliation',
+  'Arka Jain University official website',
+  'Arka Jain University Jharkhand official website',
+  'Arka Jain University Jamshedpur official website',
+  'Arka Jain University collegedunia',
+  'Arka Jain University shiksha',
+  'Arka Jain University collegedekho',
+  'Arka Jain University collegebatch',
+  'Arka Jain University collegevidya',
+  'Arka Jain University careers360',
+  'Arka Jain University getmyuni',
+  'Arka Jain University universitykart',
+  'Arka Jain University specializations',
+  'Arka Jain University admission brochure pdf',
+  'Arka Jain University fee structure pdf',
+  'Arka Jain University placements',
+  'Arka Jain University placement report',
+  'Arka Jain University reviews',
+  'Arka Jain University ranking',
+  'Arka Jain University contact',
+  'Arka Jain University AICTE approval',
+  'Arka Jain University NAAC',
+  'Arka Jain University NBA accreditation',
+  'Arka Jain University NIRF',
+  'Arka Jain University seat intake',
+  'Arka Jain University eligibility',
+  'Arka Jain University scholarship',
+  'Arka Jain University hostel facilities',
+  'Arka Jain University brochure pdf',
+  'site:careers360.com "Arka Jain University" "Jharkhand"',
+  'site:getmyuni.com "Arka Jain University" "Jharkhand"',
+  'site:collegebatch.com "Arka Jain University" "Jharkhand"',
+  'site:collegevidya.com "Arka Jain University" "Jharkhand"',
+  'site:universitykart.com "Arka Jain University" "Jharkhand"',
+  'site:iirfranking.com "Arka Jain University" "Jharkhand"',
+  'site:educationdunia.com "Arka Jain University" "Jharkhand"',
+  'site:sikshapedia.com "Arka Jain University" "Jharkhand"',
+  'site:embibe.com "Arka Jain University" "Jharkhand"',
+  'site:campusoption.com "Arka Jain University" "Jharkhand"',
+  'site:aglasem.com "Arka Jain University" "Jharkhand"',
+  'arka jain university official website',
+  'arka jain university Jharkhand official website',
+  'arka jain university Jamshedpur official website',
+  'arka jain university collegedunia',
+  'arka jain university shiksha',
+  'arka jain university collegedekho',
+  'arka jain university collegebatch',
+  'arka jain university collegevidya',
+  'arka jain university careers360',
+  'arka jain university getmyuni',
+  'arka jain university universitykart',
+  'arka jain university courses fees',
+  'arka jain university all courses',
+  'arka jain university specializations',
+  'arka jain university admission brochure pdf',
+  'arka jain university fee structure pdf',
+  'arka jain university departments'
+]
+[AI search] found URLs: [ 'https://arkajainuniversity.ac.in/' ]
+[AI scrape] page count: 68
+[AI scrape] readable text length: 971408
+[AI research] mode: deep
+[AI research] source count: 1 scraped: 62 brochures: 9
+[AI duplicate] MongoDB not connected; skipping duplicate lookup
+[AI extract] courses: 10 confidence: 85 sources: 68
+[0mPOST /api/ai/extract-college [32m200[0m 69915.210 ms - 73449[0m
+[0mGET /api/colleges?search=&state=&city=&course=&ownership=&approval=&verificationStatus=&sortBy=updatedAt [31m503[0m 1.241 ms - 108[0m
+[0mGET /api/colleges?search=&state=&city=&course=&ownership=&approval=&verificationStatus=&sortBy=updatedAt [31m503[0m 5.812 ms - 108[0m
+[0mGET /api/colleges?search=&state=&city=&course=&ownership=&approval=&verificationStatus=&sortBy=updatedAt [31m503[0m 2.749 ms - 108[0m
+[0mPOST /api/auth/login [33m401[0m 8.831 ms - 39[0m
+[0mPOST /api/auth/login [33m401[0m 3.449 ms - 39[0m
+[0mPOST /api/auth/login [33m401[0m 9.582 ms - 39[0m
+[0mPOST /api/auth/login [33m401[0m 2.517 ms - 39[0m
+[0mPOST /api/auth/login [32m200[0m 93.681 ms - 240[0m
+[0mGET /api/auth/me [33m404[0m 6.002 ms - 1857[0m
+[0mPOST /api/auth/login [32m200[0m 6.162 ms - 240[0m
+[0mGET /api/auth/me [33m404[0m 1.045 ms - 1857[0m
+[0mGET /api/colleges?search=&state=&city=&course=&ownership=&approval=&verificationStatus=&sortBy=updatedAt [31m503[0m 0.665 ms - 108[0m
+[0mGET /api/colleges?search=&state=&city=&course=&ownership=&approval=&verificationStatus=&sortBy=updatedAt [31m503[0m 0.236 ms - 108[0m
+[0mPOST /api/auth/login [32m200[0m 42.952 ms - 240[0m
+[0mGET /api/auth/me [33m404[0m 3.245 ms - 1857[0m
+[0mGET /api/colleges?sortBy=updatedAt [31m503[0m 9.803 ms - 108[0m
+[0mGET /api/colleges?sortBy=updatedAt [31m503[0m 0.332 ms - 108[0m
+[0mGET /api/colleges?sortBy=updatedAt [31m503[0m 0.830 ms - 108[0m
+[0mGET /api/colleges?sortBy=updatedAt [31m503[0m 3.613 ms - 108[0m
+[0mGET /api/colleges?sortBy=updatedAt [31m503[0m 18.902 ms - 108[0m
+[0mGET /api/colleges?sortBy=updatedAt [31m503[0m 0.546 ms - 108[0m
+[0mGET /api/colleges?search=&state=&city=&course=&ownership=&approval=&verificationStatus=&sortBy=updatedAt [31m503[0m 3.177 ms - 108[0m
+[0mPOST /api/auth/login [32m200[0m 36.423 ms - 240[0m
+[0mGET /api/colleges?sortBy=updatedAt [31m503[0m 1.230 ms - 108[0m
+[0mGET /api/auth/me [33m404[0m 6.103 ms - 1857[0m
+[0mGET /api/colleges?sortBy=updatedAt [31m503[0m 0.368 ms - 108[0m
+[0mPOST /api/auth/login [32m200[0m 5.309 ms - 240[0m
+[0mGET /api/colleges?sortBy=updatedAt [31m503[0m 0.718 ms - 108[0m
+[0mGET /api/auth/me [33m404[0m 1.071 ms - 1857[0m
+[0mGET /api/colleges?sortBy=updatedAt [31m503[0m 5.312 ms - 108[0m
+[0mPOST /api/auth/login [32m200[0m 4.253 ms - 240[0m
+[0mGET /api/colleges?sortBy=updatedAt [31m503[0m 0.445 ms - 108[0m
+[0mGET /api/auth/me [33m404[0m 0.746 ms - 1857[0m
+[0mGET /api/colleges?sortBy=updatedAt [31m503[0m 0.832 ms - 108[0m
+[0mGET /api/colleges?search=&state=&city=&course=&ownership=&approval=&verificationStatus=&sortBy=updatedAt [31m503[0m 0.427 ms - 108[0m
+[0mGET /api/colleges?sortBy=updatedAt [31m503[0m 0.466 ms - 108[0m
+[0mGET /api/colleges?sortBy=updatedAt [31m503[0m 0.449 ms - 108[0m

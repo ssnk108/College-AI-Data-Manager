@@ -7,7 +7,9 @@
     "dev": "nodemon src/server.js",
     "start": "node src/server.js",
     "seed": "node sample-data/seed.js",
-    "test:ai": "node scripts/testCollegeExtraction.js"
+    "create-admin": "node scripts/createAdmin.js",
+    "test:ai": "node scripts/testCollegeExtraction.js",
+    "test:quality": "node scripts/testCollegeExtractionQuality.js"
   },
   "dependencies": {
     "axios": "^1.7.9",
@@ -21,6 +23,7 @@
     "mongoose": "^8.9.3",
     "morgan": "^1.10.0",
     "pdf-parse": "^2.4.5",
+    "string-similarity": "^4.0.4",
     "validator": "^13.12.0"
   },
   "devDependencies": {

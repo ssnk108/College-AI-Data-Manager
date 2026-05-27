@@ -1,30 +1,34 @@
 import React from "react";
+import { Card } from "./ui.jsx";
 
-export function TextInput({ label, value, onChange, required, type = "text", placeholder }) {
+export function TextInput({ label, value, onChange, required, type = "text", placeholder, helper, error }) {
   return (
     <label className="block">
-      <span className="mb-1 block text-sm font-medium text-slate-700">{label}{required ? " *" : ""}</span>
+      <span className="label">{label}{required ? " *" : ""}</span>
       <input
         type={type}
         value={value ?? ""}
         onChange={(event) => onChange(event.target.value)}
         placeholder={placeholder}
-        className="w-full rounded-md border border-slate-300 bg-white px-3 py-2 text-sm outline-none focus:border-ocean focus:ring-2 focus:ring-ocean/20"
+        className="field"
       />
+      {helper && <span className="mt-1 block text-xs text-slate-500">{helper}</span>}
+      {error && <span className="mt-1 block text-xs font-medium text-rose-600">{error}</span>}
     </label>
   );
 }
 
-export function TextArea({ label, value, onChange, rows = 3 }) {
+export function TextArea({ label, value, onChange, rows = 3, helper }) {
   return (
     <label className="block">
-      <span className="mb-1 block text-sm font-medium text-slate-700">{label}</span>
+      <span className="label">{label}</span>
       <textarea
         value={value ?? ""}
         onChange={(event) => onChange(event.target.value)}
         rows={rows}
-        className="w-full rounded-md border border-slate-300 bg-white px-3 py-2 text-sm outline-none focus:border-ocean focus:ring-2 focus:ring-ocean/20"
+        className="field"
       />
+      {helper && <span className="mt-1 block text-xs text-slate-500">{helper}</span>}
     </label>
   );
 }
@@ -32,8 +36,8 @@ export function TextArea({ label, value, onChange, rows = 3 }) {
 export function SelectInput({ label, value, onChange, options }) {
   return (
     <label className="block">
-      <span className="mb-1 block text-sm font-medium text-slate-700">{label}</span>
-      <select value={value ?? ""} onChange={(event) => onChange(event.target.value)} className="w-full rounded-md border border-slate-300 bg-white px-3 py-2 text-sm">
+      <span className="label">{label}</span>
+      <select value={value ?? ""} onChange={(event) => onChange(event.target.value)} className="field">
         <option value="">Select</option>
         {options.map((option) => (
           <option key={option} value={option}>{option}</option>
@@ -45,9 +49,9 @@ export function SelectInput({ label, value, onChange, options }) {
 
 export function Section({ title, children }) {
   return (
-    <section className="rounded-lg border border-slate-200 bg-white p-4 shadow-sm">
-      <h2 className="mb-4 text-lg font-semibold">{title}</h2>
+    <Card>
+      <h2 className="mb-4 text-lg font-bold text-slate-950">{title}</h2>
       {children}
-    </section>
+    </Card>
   );
 }

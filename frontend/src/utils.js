@@ -1,10 +1,15 @@
 import writeXlsxFile from "write-excel-file";
+import { summarizeApprovals, summarizeNaacNirf } from "./utils/summarizeApprovals.js";
+import { summarizeCourses } from "./utils/summarizeCourses.js";
 
 export function collegeToRow(college) {
   const basic = college.basicInfo || {};
   const approval = college.affiliationApproval || {};
   const placements = college.placements || {};
   const fees = (college.courses || []).map((c) => c.totalFee).filter(Boolean);
+  const courses = summarizeCourses(college.courses || [], 6);
+  const approvals = summarizeApprovals(approval, 6);
+  const naacNirf = summarizeNaacNirf(approval);
 
   return {
     "College name": basic.collegeName,
@@ -12,10 +17,10 @@ export function collegeToRow(college) {
     State: basic.state,
     Ownership: basic.ownershipType,
     "Affiliated university": approval.affiliatedUniversity,
-    "Main courses": (college.courses || []).map((c) => c.courseName).filter(Boolean).join(", "),
+    "Main courses": courses.label,
     "Fees range": fees.length ? `${Math.min(...fees)} - ${Math.max(...fees)}` : "",
-    "Approval status": [approval.ugcApproval, approval.aicteApproval].filter(Boolean).join(", "),
-    "NAAC/NIRF": `${approval.naacGrade || ""} ${approval.nirfRanking || ""}`,
+    "Approval status": approvals.approvals.join(", "),
+    "NAAC/NIRF": naacNirf.join(" | "),
     "Average package": placements.averagePackage,
     "Verification status": college.verificationStatus,
     "Last updated": college.updatedAt ? new Date(college.updatedAt).toLocaleDateString() : ""

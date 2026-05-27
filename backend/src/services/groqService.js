@@ -132,8 +132,22 @@ function parseJsonSafely(text) {
 }
 
 function sourceTextForPrompt(scrapedPages) {
+  function keywordScore(page = {}) {
+    const text = `${page.url || ""} ${page.title || ""} ${page.usedFor || ""}`.toLowerCase();
+    let score = 0;
+    if (/course|program|school|department|academics/.test(text)) score += 8;
+    if (/fee|fees|hostel/.test(text)) score += 8;
+    if (/admission|brochure|eligibility/.test(text)) score += 7;
+    if (/placement|recruiter|package/.test(text)) score += 7;
+    if (/contact|about/.test(text)) score += 5;
+    if (/aicte|ugc|naac|nirf|approval|accredit/.test(text)) score += 5;
+    if (/pdf/.test(text)) score += 6;
+    return score;
+  }
+
   return scrapedPages
     .filter((page) => page.text)
+    .sort((a, b) => keywordScore(b) - keywordScore(a))
     .map(
       (page, index) =>
         `SOURCE ${index + 1}
@@ -142,10 +156,10 @@ TITLE: ${page.title}
 SOURCE_TYPE: ${page.sourceType || "Web Page"}
 USED_FOR: ${page.usedFor || ""}
 TEXT:
-${page.text}`
+${String(page.text).slice(0, 6500)}`
     )
     .join("\n\n---\n\n")
-    .slice(0, 52000);
+    .slice(0, 95000);
 }
 
 function buildPrompt({ collegeName, normalizedCollege, city, state, officialWebsite, scrapedPages, directAdmissionAvailable, ownershipInput, admissionNote }) {
@@ -165,11 +179,14 @@ Target college:
 Return only valid JSON matching this exact shape:
 ${JSON.stringify(aiCollegeJsonTemplate, null, 2)}
 
-You are an expert education consultancy research assistant.
+You are an advanced autonomous college research engine and expert education consultancy research assistant.
 
 Your task:
 Identify the correct college even if the user entered partial name, short name, or spelling mistake.
 Use the college name, city, state, source URLs, and scraped text to extract maximum accurate data.
+The goal is maximum accurate completion, not a short summary.
+Use all provided scraped pages and source metadata.
+Think like a deep research analyst working for ANY college type: university, engineering, MBA, medical, pharmacy, nursing, polytechnic, government, private, autonomous, deemed, or small local college.
 
 Rules:
 - Return only valid JSON.
@@ -186,7 +203,11 @@ Rules:
 - If a number is unknown, return null.
 - Do not leave everything blank when the sources include usable facts.
 - Extract maximum possible courses from courses, fees, departments, academics, admission, and brochure pages.
+- If multiple sources provide course lists, merge them.
+- If fees differ, store the clearest value and add feeSource.
 - Do not limit courses to only top courses.
+- Extract placements, approvals, facilities, rankings, brochures, seat intake, hostel information, scholarships, eligibility, and accepted exams whenever sources mention them.
+- Do not stop after partial information when later sources contain richer details.
 - For every course include courseName, degreeType, stream, duration, eligibility, entranceExam, annualFee, totalFee, semesterFee, minimumFee, maximumFee, hostelFee, admissionFee, cautionMoney, seatIntake, mode, admissionType, courseSource, feeSource, eligibilitySource, incentive, and donation.
 - Do not guess incentive or donation amounts.
 - Keep incentive and donation values empty for manual entry; booleans should be false unless the user explicitly supplied admission context.

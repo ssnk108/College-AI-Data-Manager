@@ -1,0 +1,1069 @@
+{
+  "generatedAt": "2026-05-27T06:34:01.235Z",
+  "apiBase": "http://127.0.0.1:5000/api",
+  "averageQualityScore": 7,
+  "passingCount": 0,
+  "results": [
+    {
+      "input": {
+        "collegeName": "Arka Jain University",
+        "city": "Jamshedpur",
+        "state": "Jharkhand"
+      },
+      "matchedCollegeName": "Arka Jain University",
+      "officialWebsite": "https://arkajainuniversity.ac.in/",
+      "coursesFound": 10,
+      "feesFound": 0,
+      "sourceLinksCount": 68,
+      "confidenceScore": 85,
+      "qualityScore": 65,
+      "missingFields": [
+        {
+          "section": "basicInfo",
+          "field": "address/contact/email",
+          "reason": "Contact page may not have been scraped or the content is hidden in structured blocks.",
+          "queryTemplates": [
+            "Arka Jain University contact address",
+            "Arka Jain University contact official",
+            "Arka Jain University about contact"
+          ],
+          "sourceTypes": [
+            "official contact page",
+            "about page"
+          ]
+        },
+        {
+          "section": "courses",
+          "field": "fees",
+          "reason": "Course fees are missing for most courses.",
+          "queryTemplates": [
+            "Arka Jain University fee structure PDF",
+            "Arka Jain University courses and fees Collegedunia",
+            "Arka Jain University courses and fees Shiksha",
+            "Arka Jain University CollegeDekho fees",
+            "Arka Jain University hostel fees"
+          ],
+          "sourceTypes": [
+            "fee PDF",
+            "Collegedunia",
+            "Shiksha",
+            "CollegeDekho"
+          ]
+        },
+        {
+          "section": "admission",
+          "field": "admissionProcess",
+          "reason": "Admission page/brochure did not yield a clear process.",
+          "queryTemplates": [
+            "Arka Jain University admission process",
+            "Arka Jain University admission brochure PDF",
+            "Arka Jain University eligibility admission"
+          ],
+          "sourceTypes": [
+            "official admission page",
+            "brochure PDF"
+          ]
+        },
+        {
+          "section": "placements",
+          "field": "placement data",
+          "reason": "Placement package/recruiter fields were blank.",
+          "queryTemplates": [
+            "Arka Jain University placement report PDF",
+            "Arka Jain University highest package",
+            "Arka Jain University average package",
+            "Arka Jain University top recruiters",
+            "Arka Jain University NIRF placement"
+          ],
+          "sourceTypes": [
+            "official placement page",
+            "placement PDF",
+            "Shiksha",
+            "Careers360",
+            "CollegeDekho"
+          ]
+        },
+        {
+          "section": "affiliationApproval",
+          "field": "affiliatedUniversity",
+          "reason": "Affiliation/university relation was not confidently extracted.",
+          "queryTemplates": [
+            "Arka Jain University affiliation",
+            "Arka Jain University university affiliation",
+            "Arka Jain University UGC"
+          ],
+          "sourceTypes": [
+            "official about page",
+            "UGC",
+            "university website"
+          ]
+        }
+      ],
+      "failedUrls": [
+        "https://arkajainuniversity.ac.in/fees-payment/Reference.com (Request failed with status code 404)",
+        "https://arkajainuniversity.ac.in/contact-us/Reference.com (Request failed with status code 404)",
+        "https://arkajainuniversity.ac.in/schools-and-institutes/school-of-commerce-and-management/Reference.com (Request failed with status code 404)",
+        "https://arkajainuniversity.ac.in/schools-and-institutes/school-of-law/Reference.com (Request failed with status code 404)",
+        "https://arkajainuniversity.ac.in/schools-and-institutes/school-of-engineering-and-it/b-tech-cse-in-ds-ai-with-ibm/ (Request failed with status code 404)",
+        "https://arkajainuniversity.ac.in/schools-and-institutes/school-of-engineering-and-it/m-tech/ (Request failed with status code 404)"
+      ],
+      "scrapedTextLength": 971408,
+      "retryAttempts": 3,
+      "sourceSuccess": [
+        {
+          "source": "Official Website",
+          "url": "https://arkajainuniversity.ac.in/",
+          "fieldsFilled": [
+            "courses",
+            "fees",
+            "admission",
+            "placements",
+            "approvals",
+            "contact"
+          ],
+          "coursesFound": 50,
+          "feesFound": 4
+        },
+        {
+          "source": "Discovered Page",
+          "url": "https://arkajainuniversity.ac.in/academics/notice/general-notice/",
+          "fieldsFilled": [
+            "courses",
+            "fees",
+            "admission"
+          ],
+          "coursesFound": 24,
+          "feesFound": 3
+        },
+        {
+          "source": "Discovered Page",
+          "url": "https://arkajainuniversity.ac.in/fees-payment/",
+          "fieldsFilled": [
+            "courses",
+            "fees",
+            "admission",
+            "approvals",
+            "contact"
+          ],
+          "coursesFound": 50,
+          "feesFound": 4
+        },
+        {
+          "source": "Discovered Page",
+          "url": "https://arkajainuniversity.ac.in/contact-us/",
+          "fieldsFilled": [
+            "courses",
+            "fees",
+            "admission",
+            "approvals",
+            "contact"
+          ],
+          "coursesFound": 50,
+          "feesFound": 4
+        },
+        {
+          "source": "Discovered Page",
+          "url": "https://arkajainuniversity.ac.in/academics/notice/important-notifications-statutory-bodies-agencies/",
+          "fieldsFilled": [
+            "courses",
+            "fees",
+            "admission",
+            "approvals",
+            "contact"
+          ],
+          "coursesFound": 50,
+          "feesFound": 4
+        },
+        {
+          "source": "Discovered Page",
+          "url": "https://arkajainuniversity.ac.in/wp-content/uploads/2026/04/Admission-Notification-26-27.pdf",
+          "fieldsFilled": [],
+          "coursesFound": 0,
+          "feesFound": 0
+        },
+        {
+          "source": "Discovered Page",
+          "url": "https://arkajainuniversity.ac.in/schools-and-institutes/school-of-commerce-and-management/",
+          "fieldsFilled": [
+            "courses",
+            "fees",
+            "admission",
+            "approvals",
+            "contact"
+          ],
+          "coursesFound": 50,
+          "feesFound": 4
+        },
+        {
+          "source": "Discovered Page",
+          "url": "https://arkajainuniversity.ac.in/schools-and-institutes/school-of-law/",
+          "fieldsFilled": [
+            "courses",
+            "fees",
+            "admission",
+            "approvals",
+            "contact"
+          ],
+          "coursesFound": 50,
+          "feesFound": 4
+        },
+        {
+          "source": "Discovered Page",
+          "url": "https://arkajainuniversity.ac.in/schools-and-institutes/school-of-engineering-and-it/",
+          "fieldsFilled": [
+            "courses",
+            "fees",
+            "admission",
+            "approvals",
+            "contact"
+          ],
+          "coursesFound": 50,
+          "feesFound": 4
+        },
+        {
+          "source": "Discovered Page",
+          "url": "https://arkajainuniversity.ac.in/schools-and-institutes/school-of-humanities/",
+          "fieldsFilled": [
+            "courses",
+            "fees",
+            "admission",
+            "approvals",
+            "contact"
+          ],
+          "coursesFound": 50,
+          "feesFound": 4
+        },
+        {
+          "source": "Discovered Page",
+          "url": "https://arkajainuniversity.ac.in/schools-and-institutes/school-of-health-allied-science/",
+          "fieldsFilled": [
+            "courses",
+            "fees",
+            "admission",
+            "approvals",
+            "contact"
+          ],
+          "coursesFound": 50,
+          "feesFound": 4
+        },
+        {
+          "source": "Discovered Page",
+          "url": "https://arkajainuniversity.ac.in/schools-and-institutes/school-of-research/",
+          "fieldsFilled": [
+            "courses",
+            "fees",
+            "admission",
+            "approvals",
+            "contact"
+          ],
+          "coursesFound": 50,
+          "feesFound": 4
+        },
+        {
+          "source": "Discovered Page",
+          "url": "https://arkajainuniversity.ac.in/placement-drive-by-deloitte-fiat-india-and-ceat-tires-media-coverage/",
+          "fieldsFilled": [
+            "courses",
+            "fees",
+            "admission",
+            "placements",
+            "approvals",
+            "contact"
+          ],
+          "coursesFound": 50,
+          "feesFound": 4
+        },
+        {
+          "source": "Discovered Page",
+          "url": "https://arkajainuniversity.ac.in/placement-drive-by-rkfl/",
+          "fieldsFilled": [
+            "courses",
+            "fees",
+            "admission",
+            "placements",
+            "approvals",
+            "contact"
+          ],
+          "coursesFound": 50,
+          "feesFound": 4
+        },
+        {
+          "source": "Discovered Page",
+          "url": "https://arkajainuniversity.ac.in/session-on-outcome-based-education-nep-2020-key-takeaways-from-malaviya-training/",
+          "fieldsFilled": [
+            "courses",
+            "fees",
+            "admission",
+            "approvals",
+            "contact"
+          ],
+          "coursesFound": 50,
+          "feesFound": 4
+        },
+        {
+          "source": "Discovered Page",
+          "url": "https://arkajainuniversity.ac.in/one-day-camp-and-sanitation-awareness-program/",
+          "fieldsFilled": [
+            "courses",
+            "fees",
+            "admission",
+            "approvals",
+            "contact"
+          ],
+          "coursesFound": 50,
+          "feesFound": 4
+        },
+        {
+          "source": "Discovered Page",
+          "url": "https://arkajainuniversity.ac.in/schools-and-institutes/school-of-commerce-and-management/bba/",
+          "fieldsFilled": [
+            "courses",
+            "fees",
+            "admission",
+            "approvals",
+            "contact"
+          ],
+          "coursesFound": 50,
+          "feesFound": 4
+        },
+        {
+          "source": "Discovered Page",
+          "url": "https://arkajainuniversity.ac.in/schools-and-institutes/school-of-commerce-and-management/mba/",
+          "fieldsFilled": [
+            "courses",
+            "fees",
+            "admission",
+            "approvals",
+            "contact"
+          ],
+          "coursesFound": 50,
+          "feesFound": 4
+        },
+        {
+          "source": "Discovered Page",
+          "url": "https://arkajainuniversity.ac.in/academics/",
+          "fieldsFilled": [
+            "courses",
+            "fees",
+            "admission",
+            "approvals",
+            "contact"
+          ],
+          "coursesFound": 50,
+          "feesFound": 4
+        },
+        {
+          "source": "Discovered Page",
+          "url": "https://arkajainuniversity.ac.in/academics/notice/",
+          "fieldsFilled": [
+            "courses",
+            "fees",
+            "admission",
+            "approvals",
+            "contact"
+          ],
+          "coursesFound": 50,
+          "feesFound": 4
+        },
+        {
+          "source": "Discovered Page",
+          "url": "https://arkajainuniversity.ac.in/wp-content/uploads/2022/07/Notice-492-Fee-Submission.pdf",
+          "fieldsFilled": [],
+          "coursesFound": 0,
+          "feesFound": 0
+        },
+        {
+          "source": "Discovered Page",
+          "url": "https://arkajainuniversity.ac.in/wp-content/uploads/2022/07/Notice-POSH-Training-07-07-2022.pdf",
+          "fieldsFilled": [
+            "courses"
+          ],
+          "coursesFound": 4,
+          "feesFound": 0
+        },
+        {
+          "source": "Discovered Page",
+          "url": "https://arkajainuniversity.ac.in/wp-content/uploads/2022/05/Related-to-Transport-Facility-Optionalfor-students-of-all-yearsall-courseExcept-1st-Year-for-theperiod-of-july-2022-May-2023..pdf",
+          "fieldsFilled": [
+            "courses",
+            "fees",
+            "admission",
+            "contact"
+          ],
+          "coursesFound": 0,
+          "feesFound": 4
+        },
+        {
+          "source": "Discovered Page",
+          "url": "https://arkajainuniversity.ac.in/wp-content/uploads/2022/05/Fees-payment-notice-of-5th-7th-Sem.pdf",
+          "fieldsFilled": [
+            "courses",
+            "fees",
+            "admission"
+          ],
+          "coursesFound": 4,
+          "feesFound": 2
+        },
+        {
+          "source": "Discovered Page",
+          "url": "https://arkajainuniversity.ac.in/wp-content/uploads/2021/02/Extended-Date-for-Admission-in-Ph.D-Batch-2020.pdf",
+          "fieldsFilled": [
+            "admission"
+          ],
+          "coursesFound": 0,
+          "feesFound": 0
+        },
+        {
+          "source": "Discovered Page",
+          "url": "https://arkajainuniversity.ac.in/wp-content/uploads/2021/02/AJU_TP_001_20-21_PLACEMENT-REGISTRATION_04-02-2021.pdf",
+          "fieldsFilled": [
+            "courses",
+            "placements",
+            "contact"
+          ],
+          "coursesFound": 0,
+          "feesFound": 0
+        },
+        {
+          "source": "Discovered Page",
+          "url": "https://arkajainuniversity.ac.in/wp-content/uploads/2020/08/Related-to-Backlog-Examination-Fees.pdf",
+          "fieldsFilled": [],
+          "coursesFound": 0,
+          "feesFound": 0
+        },
+        {
+          "source": "Discovered Page",
+          "url": "https://arkajainuniversity.ac.in/academics/notice/departmental-notice-year-2026/",
+          "fieldsFilled": [
+            "courses",
+            "placements"
+          ],
+          "coursesFound": 50,
+          "feesFound": 0
+        },
+        {
+          "source": "Discovered Page",
+          "url": "https://arkajainuniversity.ac.in/academics/notice/departmental-notice-year-2025/",
+          "fieldsFilled": [
+            "courses",
+            "placements"
+          ],
+          "coursesFound": 50,
+          "feesFound": 1
+        },
+        {
+          "source": "Discovered Page",
+          "url": "https://arkajainuniversity.ac.in/academics/notice/departmental-notice-year-2024/",
+          "fieldsFilled": [
+            "courses",
+            "admission",
+            "placements"
+          ],
+          "coursesFound": 50,
+          "feesFound": 0
+        },
+        {
+          "source": "Discovered Page",
+          "url": "https://arkajainuniversity.ac.in/academics/notice/fees-notice/",
+          "fieldsFilled": [
+            "courses",
+            "fees"
+          ],
+          "coursesFound": 50,
+          "feesFound": 0
+        },
+        {
+          "source": "Discovered Page",
+          "url": "https://arkajainuniversity.ac.in/academics/notice/departmental-notice/",
+          "fieldsFilled": [
+            "courses",
+            "fees",
+            "placements"
+          ],
+          "coursesFound": 50,
+          "feesFound": 0
+        },
+        {
+          "source": "Discovered Page",
+          "url": "https://arkajainuniversity.ac.in/admissions/admission-criteria/",
+          "fieldsFilled": [
+            "courses",
+            "fees",
+            "admission",
+            "approvals",
+            "contact"
+          ],
+          "coursesFound": 41,
+          "feesFound": 4
+        },
+        {
+          "source": "Discovered Page",
+          "url": "https://arkajainuniversity.ac.in/admissions/course-fee/",
+          "fieldsFilled": [
+            "courses",
+            "fees",
+            "admission",
+            "approvals",
+            "contact"
+          ],
+          "coursesFound": 36,
+          "feesFound": 50
+        },
+        {
+          "source": "Discovered Page",
+          "url": "https://arkajainuniversity.ac.in/admissions/aju-cet/",
+          "fieldsFilled": [
+            "courses",
+            "fees",
+            "admission",
+            "approvals",
+            "contact"
+          ],
+          "coursesFound": 50,
+          "feesFound": 4
+        },
+        {
+          "source": "Discovered Page",
+          "url": "https://arkajainuniversity.ac.in/admissions/payment-procedure/",
+          "fieldsFilled": [
+            "courses",
+            "fees",
+            "admission",
+            "approvals",
+            "contact"
+          ],
+          "coursesFound": 50,
+          "feesFound": 6
+        },
+        {
+          "source": "Discovered Page",
+          "url": "https://arkajainuniversity.ac.in/wp-content/uploads/2023/04/Lost-Book-Replacement-Form.pdf",
+          "fieldsFilled": [
+            "courses",
+            "placements"
+          ],
+          "coursesFound": 0,
+          "feesFound": 1
+        },
+        {
+          "source": "Discovered Page",
+          "url": "https://arkajainuniversity.ac.in/academics/library/feedback-forms/",
+          "fieldsFilled": [
+            "courses",
+            "fees",
+            "admission",
+            "approvals",
+            "contact"
+          ],
+          "coursesFound": 50,
+          "feesFound": 4
+        },
+        {
+          "source": "Discovered Page",
+          "url": "https://arkajainuniversity.ac.in/academics/notice/examination/",
+          "fieldsFilled": [
+            "courses",
+            "fees",
+            "admission"
+          ],
+          "coursesFound": 24,
+          "feesFound": 0
+        },
+        {
+          "source": "Discovered Page",
+          "url": "https://arkajainuniversity.ac.in/academics/notice/covid-19-notice/",
+          "fieldsFilled": [
+            "courses",
+            "fees",
+            "admission",
+            "approvals",
+            "contact"
+          ],
+          "coursesFound": 49,
+          "feesFound": 4
+        },
+        {
+          "source": "Discovered Page",
+          "url": "https://arkajainuniversity.ac.in/schools-and-institutes/",
+          "fieldsFilled": [
+            "courses",
+            "fees",
+            "admission",
+            "approvals",
+            "contact"
+          ],
+          "coursesFound": 50,
+          "feesFound": 4
+        },
+        {
+          "source": "Discovered Page",
+          "url": "https://arkajainuniversity.ac.in/school-of-commerce-and-management/bba-digital-marketing-with-isdc/",
+          "fieldsFilled": [
+            "courses",
+            "fees",
+            "admission",
+            "approvals",
+            "contact"
+          ],
+          "coursesFound": 50,
+          "feesFound": 4
+        },
+        {
+          "source": "Discovered Page",
+          "url": "https://arkajainuniversity.ac.in/schools-and-institutes/school-of-commerce-and-management/bba-capital-market-in-association-with-stock-market-institute-bengaluru/",
+          "fieldsFilled": [
+            "courses",
+            "fees",
+            "admission",
+            "approvals",
+            "contact"
+          ],
+          "coursesFound": 50,
+          "feesFound": 4
+        },
+        {
+          "source": "Discovered Page",
+          "url": "https://arkajainuniversity.ac.in/schools-and-institutes/school-of-commerce-and-management/bcom-h/",
+          "fieldsFilled": [
+            "courses",
+            "fees",
+            "admission",
+            "approvals",
+            "contact"
+          ],
+          "coursesFound": 50,
+          "feesFound": 4
+        },
+        {
+          "source": "Discovered Page",
+          "url": "https://arkajainuniversity.ac.in/schools-and-institutes/school-of-commerce-and-management/b-com-hons-capital-market/",
+          "fieldsFilled": [
+            "courses",
+            "fees",
+            "admission",
+            "approvals",
+            "contact"
+          ],
+          "coursesFound": 50,
+          "feesFound": 4
+        },
+        {
+          "source": "Discovered Page",
+          "url": "https://arkajainuniversity.ac.in/schools-and-institutes/school-of-law/bba-llb/",
+          "fieldsFilled": [
+            "courses",
+            "fees",
+            "admission",
+            "approvals",
+            "contact"
+          ],
+          "coursesFound": 50,
+          "feesFound": 9
+        },
+        {
+          "source": "Discovered Page",
+          "url": "https://arkajainuniversity.ac.in/schools-and-institutes/school-of-law/llb-hons/",
+          "fieldsFilled": [
+            "courses",
+            "fees",
+            "admission",
+            "approvals",
+            "contact"
+          ],
+          "coursesFound": 50,
+          "feesFound": 4
+        },
+        {
+          "source": "Discovered Page",
+          "url": "https://arkajainuniversity.ac.in/schools-and-institutes/school-of-engineering-and-it/b-tech/",
+          "fieldsFilled": [
+            "courses",
+            "fees",
+            "admission",
+            "approvals",
+            "contact"
+          ],
+          "coursesFound": 50,
+          "feesFound": 4
+        },
+        {
+          "source": "Discovered Page",
+          "url": "https://arkajainuniversity.ac.in/schools-and-institutes/school-of-engineering-and-it/b-tech-in-artificial-intelligence-machine-learning-aiml/",
+          "fieldsFilled": [
+            "courses",
+            "fees",
+            "admission",
+            "approvals",
+            "contact"
+          ],
+          "coursesFound": 50,
+          "feesFound": 4
+        },
+        {
+          "source": "Discovered Page",
+          "url": "https://arkajainuniversity.ac.in/schools-and-institutes/school-of-engineering-and-it/diploma-in-computer-science-and-engineering/",
+          "fieldsFilled": [
+            "courses",
+            "fees",
+            "admission",
+            "approvals",
+            "contact"
+          ],
+          "coursesFound": 50,
+          "feesFound": 4
+        },
+        {
+          "source": "Discovered Page",
+          "url": "https://arkajainuniversity.ac.in/schools-and-institutes/school-of-engineering-and-it/bca/",
+          "fieldsFilled": [
+            "courses",
+            "fees",
+            "admission",
+            "approvals",
+            "contact"
+          ],
+          "coursesFound": 50,
+          "feesFound": 4
+        },
+        {
+          "source": "Discovered Page",
+          "url": "https://arkajainuniversity.ac.in/schools-and-institutes/school-of-engineering-and-it/industry-integrated-bca-cyber-security-program-in-association-with-cyber-dojo/",
+          "fieldsFilled": [
+            "courses",
+            "fees",
+            "admission",
+            "approvals",
+            "contact"
+          ],
+          "coursesFound": 50,
+          "feesFound": 4
+        },
+        {
+          "source": "Discovered Page",
+          "url": "https://arkajainuniversity.ac.in/schools-and-institutes/school-of-engineering-and-it/bca-in-artificial-intelligence-deep-learning-in-collaboration-with-ibm/",
+          "fieldsFilled": [
+            "courses",
+            "fees",
+            "admission",
+            "approvals",
+            "contact"
+          ],
+          "coursesFound": 50,
+          "feesFound": 4
+        },
+        {
+          "source": "Discovered Page",
+          "url": "https://arkajainuniversity.ac.in/schools-and-institutes/school-of-engineering-and-it/mca/",
+          "fieldsFilled": [
+            "courses",
+            "fees",
+            "admission",
+            "approvals",
+            "contact"
+          ],
+          "coursesFound": 50,
+          "feesFound": 4
+        },
+        {
+          "source": "Discovered Page",
+          "url": "https://arkajainuniversity.ac.in/schools-and-institutes/school-of-engineering-and-it/b-tech-in-mechanical-engineering/",
+          "fieldsFilled": [
+            "courses",
+            "fees",
+            "admission",
+            "approvals",
+            "contact"
+          ],
+          "coursesFound": 50,
+          "feesFound": 4
+        },
+        {
+          "source": "Discovered Page",
+          "url": "https://arkajainuniversity.ac.in/schools-and-institutes/school-of-engineering-and-it/diploma-in-mechanical-engineering/",
+          "fieldsFilled": [
+            "courses",
+            "fees",
+            "admission",
+            "approvals",
+            "contact"
+          ],
+          "coursesFound": 50,
+          "feesFound": 4
+        },
+        {
+          "source": "Discovered Page",
+          "url": "https://arkajainuniversity.ac.in/schools-and-institutes/school-of-engineering-and-it/m-tech-in-manufacturing-engineering/",
+          "fieldsFilled": [
+            "courses",
+            "fees",
+            "admission",
+            "approvals",
+            "contact"
+          ],
+          "coursesFound": 50,
+          "feesFound": 4
+        },
+        {
+          "source": "Discovered Page",
+          "url": "https://arkajainuniversity.ac.in/schools-and-institutes/school-of-engineering-and-it/diploma-in-mechatronics/",
+          "fieldsFilled": [
+            "courses",
+            "fees",
+            "admission",
+            "approvals",
+            "contact"
+          ],
+          "coursesFound": 50,
+          "feesFound": 4
+        },
+        {
+          "source": "Discovered Page",
+          "url": "https://arkajainuniversity.ac.in/schools-and-institutes/school-of-humanities/ba-english/",
+          "fieldsFilled": [
+            "courses",
+            "fees",
+            "admission",
+            "approvals",
+            "contact"
+          ],
+          "coursesFound": 50,
+          "feesFound": 4
+        },
+        {
+          "source": "Discovered Page",
+          "url": "https://arkajainuniversity.ac.in/schools-and-institutes/school-of-humanities/b-a-journalism-mass-communication/",
+          "fieldsFilled": [
+            "courses",
+            "fees",
+            "admission",
+            "approvals",
+            "contact"
+          ],
+          "coursesFound": 50,
+          "feesFound": 4
+        },
+        {
+          "source": "Discovered Page",
+          "url": "https://arkajainuniversity.ac.in/schools-and-institutes/school-of-humanities/ma-in-journalism-mass-communication",
+          "fieldsFilled": [
+            "courses",
+            "fees",
+            "admission",
+            "approvals",
+            "contact"
+          ],
+          "coursesFound": 50,
+          "feesFound": 4
+        },
+        {
+          "source": "Discovered Page",
+          "url": "https://arkajainuniversity.ac.in/schools-and-institutes/school-of-humanities/ba-fashion-design/",
+          "fieldsFilled": [
+            "courses",
+            "fees",
+            "admission",
+            "approvals",
+            "contact"
+          ],
+          "coursesFound": 50,
+          "feesFound": 4
+        }
+      ],
+      "rawSourceUrls": [
+        "https://arkajainuniversity.ac.in/",
+        "https://arkajainuniversity.ac.in/academics/notice/general-notice/",
+        "https://arkajainuniversity.ac.in/fees-payment/",
+        "https://arkajainuniversity.ac.in/contact-us/",
+        "https://arkajainuniversity.ac.in/academics/notice/important-notifications-statutory-bodies-agencies/",
+        "https://arkajainuniversity.ac.in/wp-content/uploads/2026/04/Admission-Notification-26-27.pdf",
+        "https://arkajainuniversity.ac.in/schools-and-institutes/school-of-commerce-and-management/",
+        "https://arkajainuniversity.ac.in/schools-and-institutes/school-of-law/",
+        "https://arkajainuniversity.ac.in/schools-and-institutes/school-of-engineering-and-it/",
+        "https://arkajainuniversity.ac.in/schools-and-institutes/school-of-humanities/",
+        "https://arkajainuniversity.ac.in/schools-and-institutes/school-of-health-allied-science/",
+        "https://arkajainuniversity.ac.in/schools-and-institutes/school-of-research/",
+        "https://arkajainuniversity.ac.in/placement-drive-by-deloitte-fiat-india-and-ceat-tires-media-coverage/",
+        "https://arkajainuniversity.ac.in/placement-drive-by-rkfl/",
+        "https://arkajainuniversity.ac.in/session-on-outcome-based-education-nep-2020-key-takeaways-from-malaviya-training/",
+        "https://arkajainuniversity.ac.in/one-day-camp-and-sanitation-awareness-program/",
+        "https://arkajainuniversity.ac.in/schools-and-institutes/school-of-commerce-and-management/bba/",
+        "https://arkajainuniversity.ac.in/schools-and-institutes/school-of-commerce-and-management/mba/",
+        "https://arkajainuniversity.ac.in/academics/",
+        "https://arkajainuniversity.ac.in/academics/notice/",
+        "https://arkajainuniversity.ac.in/wp-content/uploads/2022/07/Notice-492-Fee-Submission.pdf",
+        "https://arkajainuniversity.ac.in/wp-content/uploads/2022/07/Notice-POSH-Training-07-07-2022.pdf",
+        "https://arkajainuniversity.ac.in/wp-content/uploads/2022/05/Related-to-Transport-Facility-Optionalfor-students-of-all-yearsall-courseExcept-1st-Year-for-theperiod-of-july-2022-May-2023..pdf",
+        "https://arkajainuniversity.ac.in/wp-content/uploads/2022/05/Fees-payment-notice-of-5th-7th-Sem.pdf",
+        "https://arkajainuniversity.ac.in/wp-content/uploads/2021/02/Extended-Date-for-Admission-in-Ph.D-Batch-2020.pdf",
+        "https://arkajainuniversity.ac.in/wp-content/uploads/2021/02/AJU_TP_001_20-21_PLACEMENT-REGISTRATION_04-02-2021.pdf",
+        "https://arkajainuniversity.ac.in/wp-content/uploads/2020/08/Related-to-Backlog-Examination-Fees.pdf",
+        "https://arkajainuniversity.ac.in/academics/notice/departmental-notice-year-2026/",
+        "https://arkajainuniversity.ac.in/academics/notice/departmental-notice-year-2025/",
+        "https://arkajainuniversity.ac.in/academics/notice/departmental-notice-year-2024/",
+        "https://arkajainuniversity.ac.in/academics/notice/fees-notice/",
+        "https://arkajainuniversity.ac.in/academics/notice/departmental-notice/",
+        "https://arkajainuniversity.ac.in/admissions/admission-criteria/",
+        "https://arkajainuniversity.ac.in/admissions/course-fee/",
+        "https://arkajainuniversity.ac.in/admissions/aju-cet/",
+        "https://arkajainuniversity.ac.in/admissions/payment-procedure/",
+        "https://arkajainuniversity.ac.in/wp-content/uploads/2023/04/Lost-Book-Replacement-Form.pdf",
+        "https://arkajainuniversity.ac.in/academics/library/feedback-forms/",
+        "https://arkajainuniversity.ac.in/fees-payment/Reference.com",
+        "https://arkajainuniversity.ac.in/contact-us/Reference.com",
+        "https://arkajainuniversity.ac.in/academics/notice/examination/",
+        "https://arkajainuniversity.ac.in/academics/notice/covid-19-notice/",
+        "https://arkajainuniversity.ac.in/schools-and-institutes/",
+        "https://arkajainuniversity.ac.in/school-of-commerce-and-management/bba-digital-marketing-with-isdc/",
+        "https://arkajainuniversity.ac.in/schools-and-institutes/school-of-commerce-and-management/bba-capital-market-in-association-with-stock-market-institute-bengaluru/",
+        "https://arkajainuniversity.ac.in/schools-and-institutes/school-of-commerce-and-management/bcom-h/",
+        "https://arkajainuniversity.ac.in/schools-and-institutes/school-of-commerce-and-management/b-com-hons-capital-market/",
+        "https://arkajainuniversity.ac.in/schools-and-institutes/school-of-commerce-and-management/Reference.com",
+        "https://arkajainuniversity.ac.in/schools-and-institutes/school-of-law/bba-llb/",
+        "https://arkajainuniversity.ac.in/schools-and-institutes/school-of-law/llb-hons/",
+        "https://arkajainuniversity.ac.in/schools-and-institutes/school-of-law/Reference.com",
+        "https://arkajainuniversity.ac.in/schools-and-institutes/school-of-engineering-and-it/b-tech/",
+        "https://arkajainuniversity.ac.in/schools-and-institutes/school-of-engineering-and-it/b-tech-in-artificial-intelligence-machine-learning-aiml/",
+        "https://arkajainuniversity.ac.in/schools-and-institutes/school-of-engineering-and-it/b-tech-cse-in-ds-ai-with-ibm/",
+        "https://arkajainuniversity.ac.in/schools-and-institutes/school-of-engineering-and-it/diploma-in-computer-science-and-engineering/",
+        "https://arkajainuniversity.ac.in/schools-and-institutes/school-of-engineering-and-it/bca/",
+        "https://arkajainuniversity.ac.in/schools-and-institutes/school-of-engineering-and-it/industry-integrated-bca-cyber-security-program-in-association-with-cyber-dojo/",
+        "https://arkajainuniversity.ac.in/schools-and-institutes/school-of-engineering-and-it/bca-in-artificial-intelligence-deep-learning-in-collaboration-with-ibm/",
+        "https://arkajainuniversity.ac.in/schools-and-institutes/school-of-engineering-and-it/mca/",
+        "https://arkajainuniversity.ac.in/schools-and-institutes/school-of-engineering-and-it/m-tech/",
+        "https://arkajainuniversity.ac.in/schools-and-institutes/school-of-engineering-and-it/b-tech-in-mechanical-engineering/",
+        "https://arkajainuniversity.ac.in/schools-and-institutes/school-of-engineering-and-it/diploma-in-mechanical-engineering/",
+        "https://arkajainuniversity.ac.in/schools-and-institutes/school-of-engineering-and-it/m-tech-in-manufacturing-engineering/",
+        "https://arkajainuniversity.ac.in/schools-and-institutes/school-of-engineering-and-it/diploma-in-mechatronics/",
+        "https://arkajainuniversity.ac.in/schools-and-institutes/school-of-humanities/ba-english/",
+        "https://arkajainuniversity.ac.in/schools-and-institutes/school-of-humanities/b-a-journalism-mass-communication/",
+        "https://arkajainuniversity.ac.in/schools-and-institutes/school-of-humanities/ma-in-journalism-mass-communication",
+        "https://arkajainuniversity.ac.in/schools-and-institutes/school-of-humanities/ba-fashion-design/"
+      ],
+      "improvementSuggestions": [
+        "Prioritize official about/contact pages and improve address/contact extraction.",
+        "Add or prioritize course/fees/brochure queries and inspect table/card parsing.",
+        "Search admission brochure and eligibility pages; check hidden admission accordion content.",
+        "Add placement report/top recruiter/highest package queries and scrape placement PDFs.",
+        "Prioritize UGC/AICTE/NAAC/NIRF and official accreditation pages."
+      ],
+      "durationMs": 161542
+    },
+    {
+      "input": {
+        "collegeName": "Narula Institute of Technology",
+        "city": "Kolkata",
+        "state": "West Bengal"
+      },
+      "error": "fetch failed",
+      "qualityScore": 0,
+      "improvementSuggestions": [
+        "Extraction request failed; inspect backend logs, search network access, Groq API, and source scraping errors."
+      ],
+      "durationMs": 24445
+    },
+    {
+      "input": {
+        "collegeName": "narula institue",
+        "city": "Kolkata",
+        "state": "West Bengal"
+      },
+      "error": "fetch failed",
+      "qualityScore": 0,
+      "improvementSuggestions": [
+        "Extraction request failed; inspect backend logs, search network access, Groq API, and source scraping errors."
+      ],
+      "durationMs": 6
+    },
+    {
+      "input": {
+        "collegeName": "GL Bajaj",
+        "city": "Greater Noida",
+        "state": "Uttar Pradesh"
+      },
+      "error": "fetch failed",
+      "qualityScore": 0,
+      "improvementSuggestions": [
+        "Extraction request failed; inspect backend logs, search network access, Groq API, and source scraping errors."
+      ],
+      "durationMs": 3
+    },
+    {
+      "input": {
+        "collegeName": "Haldia Institute of Technology",
+        "city": "Haldia",
+        "state": "West Bengal"
+      },
+      "error": "fetch failed",
+      "qualityScore": 0,
+      "improvementSuggestions": [
+        "Extraction request failed; inspect backend logs, search network access, Groq API, and source scraping errors."
+      ],
+      "durationMs": 3
+    },
+    {
+      "input": {
+        "collegeName": "D Y Patil",
+        "city": "Pune",
+        "state": "Maharashtra"
+      },
+      "error": "fetch failed",
+      "qualityScore": 0,
+      "improvementSuggestions": [
+        "Extraction request failed; inspect backend logs, search network access, Groq API, and source scraping errors."
+      ],
+      "durationMs": 8
+    },
+    {
+      "input": {
+        "collegeName": "Techno India Salt Lake",
+        "city": "Kolkata",
+        "state": "West Bengal"
+      },
+      "error": "fetch failed",
+      "qualityScore": 0,
+      "improvementSuggestions": [
+        "Extraction request failed; inspect backend logs, search network access, Groq API, and source scraping errors."
+      ],
+      "durationMs": 3
+    },
+    {
+      "input": {
+        "collegeName": "Brainware University",
+        "city": "Kolkata",
+        "state": "West Bengal"
+      },
+      "error": "fetch failed",
+      "qualityScore": 0,
+      "improvementSuggestions": [
+        "Extraction request failed; inspect backend logs, search network access, Groq API, and source scraping errors."
+      ],
+      "durationMs": 3
+    },
+    {
+      "input": {
+        "collegeName": "UEM Kolkata",
+        "city": "Kolkata",
+        "state": "West Bengal"
+      },
+      "error": "fetch failed",
+      "qualityScore": 0,
+      "improvementSuggestions": [
+        "Extraction request failed; inspect backend logs, search network access, Groq API, and source scraping errors."
+      ],
+      "durationMs": 5
+    },
+    {
+      "input": {
+        "collegeName": "Heritage Institute of Technology",
+        "city": "Kolkata",
+        "state": "West Bengal"
+      },
+      "error": "fetch failed",
+      "qualityScore": 0,
+      "improvementSuggestions": [
+        "Extraction request failed; inspect backend logs, search network access, Groq API, and source scraping errors."
+      ],
+      "durationMs": 4
+    }
+  ]
+}

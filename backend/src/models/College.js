@@ -93,6 +93,22 @@ const collegeSchema = new mongoose.Schema(
     directAdmissionAvailable: { type: String, enum: ["Yes", "No", "Not Sure", ""], default: "" },
     ownershipInput: { type: String, enum: ["Government", "Private", "Semi-Government", "Not Sure", ""], default: "" },
     admissionNote: { type: String, default: "" },
+    normalizedCollegeName: { type: String, default: "", index: true },
+    aliases: [{ type: String }],
+    websiteDomain: { type: String, default: "", index: true },
+    fieldMeta: {
+      type: Map,
+      of: new mongoose.Schema(
+        {
+          source: { type: String, default: "" },
+          confidence: { type: Number, default: 0 },
+          updatedBy: { type: String, default: "" },
+          updatedAt: { type: Date, default: Date.now }
+        },
+        { _id: false }
+      ),
+      default: {}
+    },
     affiliationApproval: {
       affiliatedUniversity: { type: String, default: "" },
       autonomousStatus: { type: String, default: "" },
@@ -153,6 +169,16 @@ const collegeSchema = new mongoose.Schema(
       scrapedUrlCount: { type: Number, default: 0 },
       brochureCount: { type: Number, default: 0 },
       totalTextLength: { type: Number, default: 0 },
+      retryAttempts: { type: Number, default: 0 },
+      qualityScore: { type: Number, default: 0 },
+      blankFieldsCount: { type: Number, default: 0 },
+      missingFields: [{ type: mongoose.Schema.Types.Mixed }],
+      planner: { type: mongoose.Schema.Types.Mixed, default: null },
+      finalPlanner: { type: mongoose.Schema.Types.Mixed, default: null },
+      qualityBreakdown: { type: mongoose.Schema.Types.Mixed, default: null },
+      sourceSuccess: [{ type: mongoose.Schema.Types.Mixed }],
+      sourceLearningSummary: [{ type: mongoose.Schema.Types.Mixed }],
+      universalEngine: { type: Boolean, default: false },
       sourcePriority: [
         {
           title: { type: String, default: "" },

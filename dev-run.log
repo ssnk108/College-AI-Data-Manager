@@ -1,0 +1,31 @@
+
+> college-ai-data-manager@1.0.0 dev
+> concurrently "npm run dev --prefix backend" "npm run dev --prefix frontend"
+
+(node:73512) [DEP0060] DeprecationWarning: The `util._extend` API is deprecated. Please use Object.assign() instead.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+[0] 
+[0] > college-ai-data-manager-backend@1.0.0 dev
+[0] > nodemon src/server.js
+[0] 
+[1] 
+[1] > college-ai-data-manager-frontend@1.0.0 dev
+[1] > vite --host 0.0.0.0
+[1] 
+[0] [33m[nodemon] 3.1.14[39m
+[0] [33m[nodemon] to restart at any time, enter `rs`[39m
+[0] [33m[nodemon] watching path(s): *.*[39m
+[0] [33m[nodemon] watching extensions: js,mjs,cjs,json[39m
+[0] [32m[nodemon] starting `node src/server.js`[39m
+[1] 
+[1]   [32m[1mVITE[22m v6.4.2[39m  [2mready in [0m[1m734[22m[2m[0m ms[22m
+[1] 
+[1]   [32m➜[39m  [1mLocal[22m:   [36mhttp://localhost:[1m5173[22m/[39m
+[1]   [32m➜[39m  [1mNetwork[22m: [36mhttp://10.210.124.183:[1m5173[22m/[39m
+[0] [startup] JWT_SECRET should be set to a strong secret.
+[0] API running on port 5000
+[0] [36m[database] Connection attempt 1[0m
+[0] [33m[database] MongoDB disconnected[0m
+[0] [31m[database] Connection attempt failed: Could not connect to any servers in your MongoDB Atlas cluster. One common reason is that you're trying to access the database from an IP that isn't whitelisted. Make sure your current IP address is on your Atlas cluster's IP whitelist: https://www.mongodb.com/docs/atlas/security-whitelist/[0m
+[0] [33m[database] Retrying database connection in 10s. Reason: Could not connect to any servers in your MongoDB Atlas cluster. One common reason is that you're trying to access the database from an IP that isn't whitelisted. Make sure your current IP address is on your Atlas cluster's IP whitelist: https://www.mongodb.com/docs/atlas/security-whitelist/[0m
+[0] [31m[database] MongoDB error: connect EACCES 64:ff9b::9f29:f2fd:27017, connect EACCES 159.41.242.253:27017[0m

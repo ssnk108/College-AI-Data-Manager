@@ -49,7 +49,7 @@ function normalizeUrl(url) {
   }
 }
 
-export function buildSearchQueries({ collegeName, city, state }) {
+export function buildSearchQueries({ collegeName, city, state, extraQueries = [] }) {
   const normalized = normalizeCollegeName(collegeName);
   const names = [...new Set(normalized.possibleNames)];
   const queryTemplates = [
@@ -94,9 +94,12 @@ export function buildSearchQueries({ collegeName, city, state }) {
     queryTemplates.forEach((template) => {
       queries.push(template.replace("{name}", name).replace("{city}", city || "").replace("{state}", state || "").replace(/\s+/g, " ").trim());
     });
+    trustedEducationDomains.forEach((domain) => {
+      queries.push(`site:${domain} "${name}" "${state || city || ""}"`.replace(/\s+/g, " ").trim());
+    });
   });
 
-  return [...new Set(queries)].slice(0, 80);
+  return [...new Set([...extraQueries, ...queries])].slice(0, 100);
 }
 
 async function searchDuckDuckGo(query) {
@@ -112,6 +115,30 @@ async function searchDuckDuckGo(query) {
     let href = $(element).attr("href") || "";
     if (href.startsWith("//duckduckgo.com/l/?")) href = new URL(`https:${href}`).searchParams.get("uddg") || "";
     if (href.startsWith("/l/?")) href = new URL(`https://duckduckgo.com${href}`).searchParams.get("uddg") || "";
+    const url = normalizeUrl(href);
+    if (!url) return;
+    results.push({
+      title: $(element).text().replace(/\s+/g, " ").trim() || url,
+      url,
+      sourceType: "Search Result",
+      usedFor: query
+    });
+  });
+
+  return results;
+}
+
+async function searchBing(query) {
+  const response = await axios.get("https://www.bing.com/search", {
+    params: { q: query },
+    timeout: SEARCH_TIMEOUT_MS,
+    headers: { "User-Agent": SEARCH_USER_AGENT }
+  });
+  const $ = cheerio.load(response.data);
+  const results = [];
+
+  $("li.b_algo h2 a, h2 a").each((_, element) => {
+    const href = $(element).attr("href") || "";
     const url = normalizeUrl(href);
     if (!url) return;
     results.push({
@@ -180,7 +207,7 @@ function hostScore(source, input) {
 async function probeCandidateUrl(url, input) {
   try {
     const response = await axios.get(url, {
-      timeout: 7000,
+      timeout: 4000,
       maxRedirects: 3,
       headers: { "User-Agent": SEARCH_USER_AGENT }
     });
@@ -223,25 +250,37 @@ async function probeLikelyOfficialSites(input) {
     return aShort - bShort;
   });
   const results = [];
-  for (const url of prioritized.slice(0, 40)) {
-    const source = await probeCandidateUrl(url, input);
-    if (source && !results.some((item) => item.url === source.url)) results.push(source);
+  const candidateLimit = input.extractionMode === "deep" ? 28 : 16;
+  const candidatesToProbe = prioritized.slice(0, candidateLimit);
+  for (let index = 0; index < candidatesToProbe.length; index += 7) {
+    const batch = candidatesToProbe.slice(index, index + 7);
+    const probed = await Promise.all(batch.map((url) => probeCandidateUrl(url, input)));
+    probed.filter(Boolean).forEach((source) => {
+      if (!results.some((item) => item.url === source.url)) results.push(source);
+    });
     if (results.length >= 3) break;
   }
   return results;
 }
 
 async function runSearch(query) {
+  const results = [];
   try {
-    return await searchDuckDuckGo(query);
+    results.push(...(await searchDuckDuckGo(query)));
   } catch {
-    return [];
+    // Try Bing below.
   }
+  try {
+    results.push(...(await searchBing(query)));
+  } catch {
+    // Search failures are tolerated; official probing still runs.
+  }
+  return results;
 }
 
-export async function findCollegeSourceUrls({ collegeName, city, state, officialWebsite, sourceUrls = [], extractionMode = "quick" }) {
+export async function findCollegeSourceUrls({ collegeName, city, state, officialWebsite, sourceUrls = [], extractionMode = "quick", extraQueries = [] }) {
   const normalized = normalizeCollegeName(collegeName);
-  const input = { collegeName, city, state };
+  const input = { collegeName, city, state, extractionMode };
   const manualSources = [officialWebsite, ...sourceUrls]
     .filter(Boolean)
     .map((url) => ({
@@ -252,7 +291,7 @@ export async function findCollegeSourceUrls({ collegeName, city, state, official
     }))
     .filter((source) => source.url);
 
-  const queries = buildSearchQueries({ collegeName, city, state });
+  const queries = buildSearchQueries({ collegeName, city, state, extraQueries });
   const queryLimit = extractionMode === "deep" ? 80 : 32;
   console.log("[AI search] normalized:", normalized);
   console.log("[AI search] queries:", queries.slice(0, queryLimit));
