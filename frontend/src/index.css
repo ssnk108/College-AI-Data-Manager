@@ -1,0 +1,26 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  background: #f7f8fb;
+  color: #17202a;
+}
+
+@media print {
+  body {
+    background: white;
+  }
+
+  .no-print {
+    display: none !important;
+  }
+
+  .a4-report {
+    box-shadow: none !important;
+    margin: 0 !important;
+    width: 210mm;
+    min-height: 297mm;
+  }
+}
+
