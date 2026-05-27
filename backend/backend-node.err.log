@@ -1,0 +1,1 @@
+[startup] JWT_SECRET should be set to a strong secret.
